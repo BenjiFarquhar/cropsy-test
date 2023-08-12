@@ -41,7 +41,9 @@ class TablePage extends React.Component<
             }}
           >
             <BlocksDisplay
-              blocks={this.state.selectedBlocks}
+              blocks={this.state.selectedBlocks.sort((a, b) =>
+                a.name.localeCompare(b.name)
+              )}
               onBlockDeleted={(block) =>
                 this.setState({
                   selectedBlocks: this.state.selectedBlocks.filter(
