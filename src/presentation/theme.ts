@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const theme = createTheme({
+const cropsyTheme = createTheme({
   palette: {
     primary: {
       main: "#f2f2f7",
@@ -37,4 +37,4 @@ const theme = createTheme({
   },
 });
 
-export default theme;
+export default cropsyTheme;
