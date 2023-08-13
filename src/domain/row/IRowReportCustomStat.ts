@@ -1,4 +1,4 @@
-export default interface RowReportCustomStat {
+export default interface IRowReportCustomStat {
   attribute: string;
   attributeVal: number;
   vinecount: number;

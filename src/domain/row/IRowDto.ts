@@ -1,10 +1,10 @@
-import RowReportCustomStat from "./RowReportCustomStat";
+import IRowReportCustomStat from "./IRowReportCustomStat";
 
-export default interface RowDto {
+export default interface IRowDto {
   id: number;
   attribute: string;
   blockId: number;
-  customStats: RowReportCustomStat[];
+  customStats: IRowReportCustomStat[];
   modifiedOn: string;
   rowId: number;
   scanArea: number;

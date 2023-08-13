@@ -1,12 +1,12 @@
-import RowReportCustomStat from "./RowReportCustomStat";
-import RowDto from "./RowReportSearchDto";
+import IRowReportCustomStat from "./IRowReportCustomStat";
+import IRowDto from "./IRowDto";
 
 export class Row {
   id: number;
   attribute: string;
   blockId: number;
   blockName: string;
-  customStats: RowReportCustomStat[];
+  customStats: IRowReportCustomStat[];
   modifiedOn: string;
   rowId: number;
   scanArea: number;
@@ -19,7 +19,7 @@ export class Row {
     attribute: string,
     blockId: number,
     blockName: string,
-    customStats: RowReportCustomStat[],
+    customStats: IRowReportCustomStat[],
     modifiedOn: string,
     rowId: number,
     scanArea: number,
@@ -40,7 +40,7 @@ export class Row {
     this.vineCounts = vineCounts;
   }
 
-  static fromDto(dto: RowDto, blockName: string): Row {
+  static fromDto(dto: IRowDto, blockName: string): Row {
     return new Row(
       dto.id,
       dto.attribute,

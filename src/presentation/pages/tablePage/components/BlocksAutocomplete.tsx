@@ -5,13 +5,13 @@ import {
 } from "@mui/material";
 import React from "react";
 import { getBlocks } from "../../../../data/BlocksRepo";
-import BlockSearchDto from "../../../../domain/block/BlockSearchDto";
+import IBlockSearchDto from "../../../../domain/block/IBlockSearchDto";
 
 export default class BlocksAutocomplete extends React.Component<
   {
-    onChange: (block: BlockSearchDto) => void;
+    onChange: (block: IBlockSearchDto) => void;
   },
-  { options: BlockSearchDto[]; value: BlockSearchDto | null }
+  { options: IBlockSearchDto[]; value: IBlockSearchDto | null }
 > {
   constructor(props: any) {
     super(props);
@@ -34,7 +34,7 @@ export default class BlocksAutocomplete extends React.Component<
 
   render() {
     return (
-      <Autocomplete<BlockSearchDto>
+      <Autocomplete<IBlockSearchDto>
         options={this.state.options}
         filterOptions={(_) => _}
         isOptionEqualToValue={() => false}

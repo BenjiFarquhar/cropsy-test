@@ -1,11 +1,11 @@
 import { Box, Chip, ListItem } from "@mui/material";
 import React from "react";
-import BlockSearchDto from "../../../../domain/block/BlockSearchDto";
+import IBlockSearchDto from "../../../../domain/block/IBlockSearchDto";
 
 export default class BlocksDisplay extends React.Component<
   {
-    blocks: BlockSearchDto[];
-    onBlockDeleted: (block: BlockSearchDto) => void;
+    blocks: IBlockSearchDto[];
+    onBlockDeleted: (block: IBlockSearchDto) => void;
   },
   {}
 > {

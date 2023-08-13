@@ -3,14 +3,14 @@ import Grid from "@mui/material/Unstable_Grid2";
 import { blue, green, red } from "@mui/material/colors";
 import BlocksAutocomplete from "./components/BlocksAutocomplete";
 import React from "react";
-import BlockSearchDto from "../../../domain/block/BlockSearchDto";
+import IBlockSearchDto from "../../../domain/block/IBlockSearchDto";
 import BlocksDisplay from "./components/BlocksDisplay";
 import RowsTable from "./components/RowsTable/RowsTable";
 import { getRowReportsById } from "../../../data/RowsRepo";
 import { Row } from "../../../domain/row/Row";
 
 type TableState = {
-  selectedBlocks: BlockSearchDto[];
+  selectedBlocks: IBlockSearchDto[];
   rows: Row[];
 };
 
