@@ -5,15 +5,20 @@ import CropsyApp from "./presentation/CropsyApp";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider } from "@mui/material/styles";
 import cropsyTheme from "./presentation/theme";
+import { Provider } from "react-redux";
+import { cropsyStore } from "./_config/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={cropsyTheme}>
-      <CropsyApp />
-    </ThemeProvider>
+    <Provider store={cropsyStore}>
+      <ThemeProvider theme={cropsyTheme}>
+        <CropsyApp />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 

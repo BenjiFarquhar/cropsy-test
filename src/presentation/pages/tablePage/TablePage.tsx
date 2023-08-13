@@ -101,7 +101,12 @@ export default class TablePage extends React.Component<{}, TableState> {
               Apply Filter
             </Button>
           </Box>
-          <Grid xs>
+          <Grid
+            xs
+            sx={{
+              p: 1,
+            }}
+          >
             <RowsTable rows={this.state.rows} />
           </Grid>
         </Grid>
