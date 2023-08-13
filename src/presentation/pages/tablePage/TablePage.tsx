@@ -7,11 +7,11 @@ import BlockSearchDto from "../../../domain/block/BlockSearchDto";
 import BlocksDisplay from "./components/BlocksDisplay";
 import RowsTable from "./components/RowsTable/RowsTable";
 import { getRowReportsById } from "../../../data/RowsRepo";
-import RowReportSearchDto from "../../../domain/row/RowReportSearchDto";
+import { Row } from "../../../domain/row/Row";
 
 type TableState = {
   selectedBlocks: BlockSearchDto[];
-  rows: RowReportSearchDto[];
+  rows: Row[];
 };
 
 export default class TablePage extends React.Component<{}, TableState> {
@@ -78,12 +78,13 @@ export default class TablePage extends React.Component<{}, TableState> {
               variant="contained"
               fullWidth={true}
               onClick={async () => {
-                const rowReports: RowReportSearchDto[] = (
+                const rowReports: Row[] = (
                   await Promise.all(
                     this.state.selectedBlocks.map(
-                      async (block): Promise<RowReportSearchDto[]> => {
-                        var x = await getRowReportsById(block.id);
-                        return x;
+                      async (block): Promise<Row[]> => {
+                        var dtos = await getRowReportsById(block.id);
+
+                        return dtos.map((dto) => Row.fromDto(dto, block.name));
                       }
                     )
                   )

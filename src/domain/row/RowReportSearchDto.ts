@@ -1,6 +1,6 @@
 import RowReportCustomStat from "./RowReportCustomStat";
 
-export default interface RowSearchDto {
+export default interface RowDto {
   id: number;
   attribute: string;
   blockId: number;

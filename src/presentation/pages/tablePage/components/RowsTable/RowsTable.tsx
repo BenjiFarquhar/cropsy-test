@@ -2,15 +2,15 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import columns from "./ColumnDefinitions";
-import RowReportSearchDto from "../../../../../domain/row/RowReportSearchDto";
+import { Row } from "../../../../../domain/row/Row";
 
 export type Rows = {
-  rows: RowReportSearchDto[];
+  rows: Row[];
 };
 
 export default class RowsTable extends React.Component<
   Rows,
-  { columns: GridColDef<RowReportSearchDto>[] }
+  { columns: GridColDef<Row>[] }
 > {
   constructor(props: Rows) {
     super(props);

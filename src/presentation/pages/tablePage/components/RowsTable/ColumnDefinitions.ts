@@ -1,13 +1,13 @@
 import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
-import RowReportSearchDto from "../../../../../domain/row/RowReportSearchDto";
+import { Row } from "../../../../../domain/row/Row";
 
-const columns: GridColDef<RowReportSearchDto>[] = [
+const columns: GridColDef<Row>[] = [
   {
     field: "attribute",
     headerName: "Attribute",
     width: 150,
   },
-  { field: "name", headerName: "Block Name", width: 150 },
+  { field: "blockName", headerName: "Block Name", width: 150 },
   {
     field: "rowId",
     headerName: "Row Id",
