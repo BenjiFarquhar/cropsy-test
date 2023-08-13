@@ -4,10 +4,10 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
-import { getBlocks } from "../../../../data/blocks_repo";
-import BlockSearchDto from "../../../../domain/block";
+import { getBlocks } from "../../../../data/BlocksRepo";
+import BlockSearchDto from "../../../../domain/block/BlockSearchDto";
 
-class BlocksAutocomplete extends React.Component<
+export default class BlocksAutocomplete extends React.Component<
   {
     onChange: (block: BlockSearchDto) => void;
   },
@@ -56,5 +56,3 @@ class BlocksAutocomplete extends React.Component<
     );
   }
 }
-
-export default BlocksAutocomplete;

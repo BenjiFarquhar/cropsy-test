@@ -12,7 +12,7 @@ import MenuItem from "@mui/material/MenuItem";
 
 const pages = ["Map", "Dashboard", "Table"];
 
-function CpAppBar() {
+export default function CpAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -107,4 +107,3 @@ function CpAppBar() {
     </AppBar>
   );
 }
-export default CpAppBar;

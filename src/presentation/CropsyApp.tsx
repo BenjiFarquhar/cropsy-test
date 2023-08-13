@@ -3,7 +3,7 @@ import { Box, CssBaseline } from "@mui/material";
 import { purple } from "@mui/material/colors";
 import TablePage from "./pages/tablePage/TablePage";
 
-function CropsyApp() {
+export default function CropsyApp() {
   return (
     <Box
       height="100vh"
@@ -17,5 +17,3 @@ function CropsyApp() {
     </Box>
   );
 }
-
-export default CropsyApp;

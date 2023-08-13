@@ -1,4 +1,5 @@
 import axios from "axios";
+import BlockSearchDto from "../domain/block/BlockSearchDto";
 
 export const getBlocks = async (filter: string): Promise<BlockSearchDto[]> => {
   const response = await axios.get<BlockSearchDto[]>(

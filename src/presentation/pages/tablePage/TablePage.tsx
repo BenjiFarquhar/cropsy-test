@@ -1,19 +1,24 @@
-import { Box, Container } from "@mui/material";
+import { Box, Button, Container } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { blue, green, red } from "@mui/material/colors";
 import BlocksAutocomplete from "./components/BlocksAutocomplete";
 import React from "react";
-import BlockSearchDto from "../../../domain/block";
+import BlockSearchDto from "../../../domain/block/BlockSearchDto";
 import BlocksDisplay from "./components/BlocksDisplay";
+import RowsTable, { Rows } from "./components/RowsTable/RowsTable";
+import { getRowReportsById } from "../../../data/RowsRepo";
+import RowReportSearchDto from "../../../domain/row/RowReportSearchDto";
 
-class TablePage extends React.Component<
-  {},
-  { selectedBlocks: BlockSearchDto[] }
-> {
+type TableState = {
+  selectedBlocks: BlockSearchDto[];
+  rows: RowReportSearchDto[];
+};
+
+export default class TablePage extends React.Component<{}, TableState> {
   constructor(props: {}) {
     super(props);
-    this.state = { selectedBlocks: [] };
+    this.state = { selectedBlocks: [], rows: [] };
   }
 
   render() {
@@ -36,6 +41,8 @@ class TablePage extends React.Component<
             sx={{
               width: "400px",
               flexDirection: "column",
+              alignContent: "stretch",
+              alignItems: "stretch",
               backgroundColor: green[500],
               p: 1,
             }}
@@ -68,14 +75,29 @@ class TablePage extends React.Component<
                 this.setState({ selectedBlocks: blocks });
               }}
             />
+            <Button
+              variant="contained"
+              fullWidth={true}
+              onClick={() => {
+                getRowReportsById(462).then((myJson) => {
+                  console.log(myJson);
+                  this.setState({ rows: myJson });
+                });
+              }}
+              sx={{
+                my: 2,
+                flexDirection: "row",
+                flex: 1,
+              }}
+            >
+              Apply Filter
+            </Button>
           </Box>
           <Grid xs>
-            <Paper>right</Paper>
+            <RowsTable rows={this.state.rows} />
           </Grid>
         </Grid>
       </Container>
     );
   }
 }
-
-export default TablePage;
