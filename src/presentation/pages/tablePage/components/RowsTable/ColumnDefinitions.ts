@@ -23,28 +23,36 @@ const columns: GridColDef<Row>[] = [
     field: "cane0",
     headerName: "Cane 0",
     width: 110,
-    valueGetter: (params: GridValueGetterParams) =>
-      `${params.row.cane0 || ""} ${params.row.cane0 || ""}`,
+    valueGetter: (params: GridValueGetterParams<Row>) =>
+      params.row.customStats.find((stat) => stat.attributeVal === 0)?.vinecount,
   },
   {
     field: "cane1",
     headerName: "Cane 1",
     width: 110,
+    valueGetter: (params: GridValueGetterParams<Row>) =>
+      params.row.customStats.find((stat) => stat.attributeVal === 1)?.vinecount,
   },
   {
     field: "cane2",
     headerName: "Cane 2",
     width: 110,
+    valueGetter: (params: GridValueGetterParams<Row>) =>
+      params.row.customStats.find((stat) => stat.attributeVal === 2)?.vinecount,
   },
   {
     field: "cane3",
     headerName: "Cane 3",
     width: 110,
+    valueGetter: (params: GridValueGetterParams<Row>) =>
+      params.row.customStats.find((stat) => stat.attributeVal === 3)?.vinecount,
   },
   {
     field: "cane4",
     headerName: "Cane 4",
     width: 110,
+    valueGetter: (params: GridValueGetterParams<Row>) =>
+      params.row.customStats.find((stat) => stat.attributeVal === 4)?.vinecount,
   },
 ];
 
