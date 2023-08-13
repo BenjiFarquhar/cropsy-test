@@ -1,12 +1,11 @@
 import { Box, Button, Container } from "@mui/material";
-import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Unstable_Grid2";
 import { blue, green, red } from "@mui/material/colors";
 import BlocksAutocomplete from "./components/BlocksAutocomplete";
 import React from "react";
 import BlockSearchDto from "../../../domain/block/BlockSearchDto";
 import BlocksDisplay from "./components/BlocksDisplay";
-import RowsTable, { Rows } from "./components/RowsTable/RowsTable";
+import RowsTable from "./components/RowsTable/RowsTable";
 import { getRowReportsById } from "../../../data/RowsRepo";
 import RowReportSearchDto from "../../../domain/row/RowReportSearchDto";
 
@@ -78,11 +77,19 @@ export default class TablePage extends React.Component<{}, TableState> {
             <Button
               variant="contained"
               fullWidth={true}
-              onClick={() => {
-                getRowReportsById(462).then((myJson) => {
-                  console.log(myJson);
-                  this.setState({ rows: myJson });
-                });
+              onClick={async () => {
+                const rowReports: RowReportSearchDto[] = (
+                  await Promise.all(
+                    this.state.selectedBlocks.map(
+                      async (block): Promise<RowReportSearchDto[]> => {
+                        var x = await getRowReportsById(block.id);
+                        return x;
+                      }
+                    )
+                  )
+                ).flat();
+
+                this.setState({ rows: rowReports });
               }}
               sx={{
                 my: 2,
