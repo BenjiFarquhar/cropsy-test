@@ -8,6 +8,7 @@ I was offered the option to do this in Flutter, my most recent tooling. I opted 
 - I’ve utilised RTK Query, the recommended more modern alternative to createAsyncThunk. Reducers and Actions are created under the hood and can be observed in the Redux Devtools chrome extension.
 - Because I was learning everything as I went, I've only done the simplest implementation, this means I've only done a couple of plain tests for the prune to target calculations, and I didn't quite understand what to do for the autocomplete "appearing" when clicking the canvas, so I just made it always visible rather than bothering you at work with questions!
 - I am happy to fit into your codebase. I'm aware everyone has an opinion about things like Classes, OOP and functional programming, and I can take on yours for this job!
+- Error handling is unimplemented for simplicity. You'll have to trust that I know how to do it ;)
 - The only packages I've used are React, Redux, and MUI (and their supporting packages).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
