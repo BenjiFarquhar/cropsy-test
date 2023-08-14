@@ -5,6 +5,7 @@ import { Row } from "../domain/row/Row";
 import { QueryReturnValue } from "@reduxjs/toolkit/dist/query/baseQueryTypes";
 import { getBlocks } from "./BlocksRepo";
 
+// Not much benefit adding this to redux as it is only used for component state
 export const getRowReportsById = async (id: number): Promise<IRowDto[]> => {
   if (id === 462 || id === 463) {
     const response = await axios.get<IRowDto[]>(
