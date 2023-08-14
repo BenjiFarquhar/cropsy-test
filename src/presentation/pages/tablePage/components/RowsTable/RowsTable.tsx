@@ -39,14 +39,14 @@ export default class RowsTable extends React.Component<
   }
 
   prunedToTarget(rows: Row[]): number {
-    const x = rows.reduce(
+    const prunedToTargetTotal = rows.reduce(
       (total, row) => total + (prunedToTarget(row.customStats) ?? 0),
       0
     );
 
-    const y = x / rows.length;
+    const prunedToTargetAverage = prunedToTargetTotal / rows.length;
 
-    return y;
+    return prunedToTargetAverage;
   }
 
   render() {

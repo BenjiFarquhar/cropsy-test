@@ -1,7 +1,10 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { rowsApi } from "../data/RowsRepo";
 
 export const cropsyStore = configureStore({
-  reducer: {},
+  reducer: { [rowsApi.reducerPath]: rowsApi.reducer },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(rowsApi.middleware),
 });
 
 export type AppDispatch = typeof cropsyStore.dispatch;
