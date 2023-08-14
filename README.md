@@ -27,4 +27,4 @@ You can also now press "Play" in Vs Code to debug this project.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Then enter "a" to run all tests.
