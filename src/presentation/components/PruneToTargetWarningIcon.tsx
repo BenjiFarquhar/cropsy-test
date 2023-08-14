@@ -1,8 +1,8 @@
 import Box from "@mui/material/Box";
-import { useGetAllRowsQuery } from "../../../data/RowsRepo";
+import { useGetAllRowsQuery } from "../../data/RowsRepo";
 import { Warning } from "@mui/icons-material";
-import { prunedToTargetAverage } from "../../pages/tablePage/components/RowsTable/ColumnDefinitions";
 import { grey, red } from "@mui/material/colors";
+import { Row } from "../../domain/row/Row";
 
 export default function PruneToTargetWarningIcon() {
   const { data, error, isLoading } = useGetAllRowsQuery({});
@@ -21,7 +21,8 @@ export default function PruneToTargetWarningIcon() {
             sx={{
               mt: "6px",
               verticalAlign: "middle",
-              color: prunedToTargetAverage(data) > 80 ? grey[500] : red[500],
+              color:
+                Row.prunedToTargetAverage(data) > 80 ? grey[500] : red[500],
             }}
           />
         </>
