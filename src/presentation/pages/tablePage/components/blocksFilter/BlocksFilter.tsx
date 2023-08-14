@@ -1,7 +1,7 @@
 import { Box, Button } from "@mui/material";
 import BlocksDisplay from "./components/BlocksDisplay";
 import BlocksAutocomplete from "./components/BlocksAutocomplete";
-import theme from "../../../../theme";
+import theme from "../../../../CropsyTheme";
 import React, { useMemo, useRef } from "react";
 import { Row } from "../../../../../domain/row/Row";
 import { getRowReportsById } from "../../../../../data/RowsRepo";

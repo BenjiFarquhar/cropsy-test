@@ -1,8 +1,16 @@
-# Getting Started with Create React App
+# A Few Notes
+
+I was offered the option to do this in Flutter, my most recent tooling. I opted for React, to demonstrate skills necessary for the job. However, this meant I was learning React, MUI and Redux as I went along. As such, I haven’t built up any particularly sophisticated methods of doing things and am still fairly unopinionated. The important things in my design were:
+
+- All stateful components are at the greatest depth in the component tree possible. This means that when the state is updated, it won’t re-render any unnecessary child components.
+- There are many opinions on when to use Redux. For simplicity, I have only used Redux for application state, not component state. That is, state that needs to be long-lived and used across multiple pages.
+- To share component state between unrelated components I have utilised React.RefObject.
+- I’ve utilised RTK Query, the recommended more modern alternative to createAsyncThunk. Reducers and Actions are created under the hood and can be observed in the Redux Devtools chrome extension.
+- Because I was learning everything as I went, I've only done the simplest implementation, this means I've only done a couple of plain tests for the prune to target calculations, and I didn't quite understand what to do for the autocomplete "appearing" when clicking the canvas, so I just made it always visible rather than bothering you at work with questions!
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Here's how you can run the app
 
 In the project directory, you can run:
 
@@ -11,36 +19,9 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+You can also now press "Play" in Vs Code to debug this project.
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
