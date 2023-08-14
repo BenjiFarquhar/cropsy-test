@@ -5,7 +5,7 @@ import theme from "../../../../CropsyTheme";
 import React, { useMemo, useRef } from "react";
 import { Row } from "../../../../../domain/row/Row";
 import { getRowReportsById } from "../../../../../data/RowsRepo";
-import RowsTable from "../rowsTable/RowsTable";
+import RowsTable from "../rowsTable1/RowsTable";
 
 type BlocksFilterProps = {
   rowsTableRef: React.RefObject<RowsTable>;
