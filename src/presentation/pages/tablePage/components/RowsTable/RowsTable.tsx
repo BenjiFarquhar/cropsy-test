@@ -1,8 +1,8 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import columns from "./ColumnDefinitions";
 import { Row } from "../../../../../domain/row/Row";
 import { Box, Typography } from "@mui/material";
+import columns from "./ColumnDefinitions";
 
 export default class RowsTable extends React.Component<
   {},
