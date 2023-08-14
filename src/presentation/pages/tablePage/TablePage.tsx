@@ -8,6 +8,7 @@ import BlocksDisplay from "./components/BlocksDisplay";
 import RowsTable from "./components/RowsTable/RowsTable";
 import { getRowReportsById } from "../../../data/RowsRepo";
 import { Row } from "../../../domain/row/Row";
+import theme from "../../theme";
 
 type TableState = {
   selectedBlocks: IBlockSearchDto[];
@@ -33,17 +34,18 @@ export default class TablePage extends React.Component<{}, TableState> {
             height: "100%",
             display: "flex",
             alignItems: "stretch",
-            backgroundColor: blue[500],
+            backgroundColor: "white",
           }}
         >
           <Box
             sx={{
-              width: "400px",
+              width: "300px",
               flexDirection: "column",
               alignContent: "stretch",
               alignItems: "stretch",
-              backgroundColor: green[500],
+              backgroundColor: theme.palette.primary.main,
               p: 1,
+              mb: "11px",
             }}
           >
             <BlocksDisplay

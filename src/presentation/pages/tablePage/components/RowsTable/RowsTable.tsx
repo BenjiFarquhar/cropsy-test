@@ -57,13 +57,18 @@ export default class RowsTable extends React.Component<
             sx={{ display: "flex", textAlign: "center" }}
           >
             Pruned to Target:
-            {` ${prunedToTargetAverage(this.props.rows).toFixed(1)}%`}
+            {this.props.rows.length > 0
+              ? ` ${prunedToTargetAverage(this.props.rows).toFixed(1)}%`
+              : " -"}
           </Typography>
           <Typography
             variant="h6"
             sx={{ display: "flex", textAlign: "center" }}
           >
-            Total Vines: {this.totalVines(this.props.rows)}
+            Total Vines:{" "}
+            {this.props.rows.length > 0
+              ? this.totalVines(this.props.rows)
+              : "-"}
           </Typography>
         </Box>
         <DataGrid

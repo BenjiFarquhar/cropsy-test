@@ -35,6 +35,7 @@ export default class BlocksAutocomplete extends React.Component<
   render() {
     return (
       <Autocomplete<IBlockSearchDto>
+        sx={{ backgroundColor: "white" }}
         options={this.state.options}
         filterOptions={(_) => _}
         isOptionEqualToValue={() => false}
@@ -50,7 +51,14 @@ export default class BlocksAutocomplete extends React.Component<
         onInputChange={this.onInputChange}
         getOptionLabel={(option) => option.name}
         renderInput={(params) => (
-          <TextField {...params} label="Blocks" variant="outlined" />
+          <TextField
+            {...params}
+            label="Blocks"
+            InputLabelProps={{
+              style: { color: "black" },
+            }}
+            variant="outlined"
+          />
         )}
       />
     );

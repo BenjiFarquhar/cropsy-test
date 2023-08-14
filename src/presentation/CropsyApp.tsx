@@ -5,12 +5,7 @@ import TablePage from "./pages/tablePage/TablePage";
 
 export default function CropsyApp() {
   return (
-    <Box
-      height="100vh"
-      display="flex"
-      flexDirection="column"
-      sx={{ backgroundColor: purple[500] }}
-    >
+    <Box height="100vh" display="flex" flexDirection="column">
       <CssBaseline />
       <CpAppBar />
       <TablePage />
