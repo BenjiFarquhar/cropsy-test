@@ -1,11 +1,11 @@
 import { Box, Button } from "@mui/material";
-import BlocksDisplay from "./BlocksDisplay";
-import BlocksAutocomplete from "./BlocksAutocomplete";
-import theme from "../../../theme";
+import BlocksDisplay from "./components/BlocksDisplay";
+import BlocksAutocomplete from "./components/BlocksAutocomplete";
+import theme from "../../../../theme";
 import React, { useMemo, useRef } from "react";
-import { Row } from "../../../../domain/row/Row";
-import { getRowReportsById } from "../../../../data/RowsRepo";
-import RowsTable from "./RowsTable/RowsTable";
+import { Row } from "../../../../../domain/row/Row";
+import { getRowReportsById } from "../../../../../data/RowsRepo";
+import RowsTable from "../rowsTable/RowsTable";
 
 type BlocksFilterProps = {
   rowsTableRef: React.RefObject<RowsTable>;

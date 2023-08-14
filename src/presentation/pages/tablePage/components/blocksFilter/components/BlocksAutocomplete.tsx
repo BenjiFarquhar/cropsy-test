@@ -4,8 +4,8 @@ import {
   TextField,
 } from "@mui/material";
 import React from "react";
-import { getBlocks } from "../../../../data/BlocksRepo";
-import IBlockSearchDto from "../../../../domain/block/IBlockSearchDto";
+import { getBlocks } from "../../../../../../data/BlocksRepo";
+import IBlockSearchDto from "../../../../../../domain/block/IBlockSearchDto";
 
 export default class BlocksAutocomplete extends React.Component<
   {

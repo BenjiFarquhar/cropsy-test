@@ -1,6 +1,6 @@
 import { Box, Chip, List, ListItem, Stack } from "@mui/material";
 import React from "react";
-import IBlockSearchDto from "../../../../domain/block/IBlockSearchDto";
+import IBlockSearchDto from "../../../../../../domain/block/IBlockSearchDto";
 
 type BlocksDisplayState = {
   blocks: IBlockSearchDto[];

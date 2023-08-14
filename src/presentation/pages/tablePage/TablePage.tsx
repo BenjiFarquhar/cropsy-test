@@ -2,8 +2,8 @@ import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { red } from "@mui/material/colors";
 import React, { useMemo, useRef } from "react";
-import RowsTable from "./components/RowsTable/RowsTable";
-import BlocksFilter from "./components/BlocksFilter";
+import RowsTable from "./components/rowsTable/RowsTable";
+import BlocksFilter from "./components/blocksFilter/BlocksFilter";
 
 export default function TablePage() {
   let rowsTableRef: React.RefObject<RowsTable> = useRef(null);
