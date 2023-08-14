@@ -9,28 +9,6 @@ import PruneToTargetWarningIcon from "./PruneToTargetWarningIcon";
 const pages = ["Map", "Dashboard", "Table"];
 
 export default function CropsyAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   return (
     <AppBar
       position="relative"
@@ -46,11 +24,7 @@ export default function CropsyAppBar() {
           </Box>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, display: "block" }}
-              >
+              <Button key={page} sx={{ my: 2, display: "block" }}>
                 {page}
               </Button>
             ))}
