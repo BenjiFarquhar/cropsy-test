@@ -4,7 +4,9 @@ import { rowsApi } from "../data/RowsRepo";
 export const cropsyStore = configureStore({
   reducer: { [rowsApi.reducerPath]: rowsApi.reducer },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(rowsApi.middleware),
+    getDefaultMiddleware({ serializableCheck: false }).concat(
+      rowsApi.middleware
+    ),
 });
 
 export type AppDispatch = typeof cropsyStore.dispatch;

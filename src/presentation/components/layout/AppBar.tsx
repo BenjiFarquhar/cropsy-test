@@ -102,7 +102,7 @@ export default function CpAppBar() {
                 {page}
               </Button>
             ))}
-            <Box sx={{ my: 2, display: "block" }}>
+            <Box sx={{ my: 2, ml: 1, display: "block" }}>
               <PruneToTargetWarningIcon />
             </Box>
           </Box>

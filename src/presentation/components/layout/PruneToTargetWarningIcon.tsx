@@ -19,8 +19,8 @@ export default function PruneToTargetWarningIcon() {
         <>
           <Warning
             sx={{
+              mt: "6px",
               verticalAlign: "middle",
-              lineHeight: "2",
               color: prunedToTargetAverage(data) > 80 ? grey[500] : red[500],
             }}
           />
