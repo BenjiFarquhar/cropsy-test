@@ -2,7 +2,18 @@ import { GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 import { Row } from "../../../../../domain/row/Row";
 import IRowReportCustomStat from "../../../../../domain/row/IRowReportCustomStat";
 
-export const prunedToTarget = (
+export const prunedToTargetAverage = (rows: Row[]): number => {
+  const prunedToTargetTotal = rows.reduce(
+    (total, row) => total + (prunedToTargetForRow(row.customStats) ?? 0),
+    0
+  );
+
+  const prunedToTargetAverage = prunedToTargetTotal / rows.length;
+
+  return prunedToTargetAverage;
+};
+
+export const prunedToTargetForRow = (
   customStats: IRowReportCustomStat[]
 ): number | null => {
   const caneCount0 = customStats.find((stat) => stat.attributeVal === 0)
@@ -51,7 +62,7 @@ const columns: GridColDef<Row>[] = [
     type: "number",
     width: 200,
     valueGetter: (params: GridValueGetterParams<Row>) =>
-      prunedToTarget(params.row.customStats)?.toFixed(1),
+      prunedToTargetForRow(params.row.customStats)?.toFixed(1),
   },
   {
     field: "cane0",

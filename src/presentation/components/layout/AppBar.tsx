@@ -9,6 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import PruneToTargetWarningIcon from "./PruneToTargetWarningIcon";
 
 const pages = ["Map", "Dashboard", "Table"];
 
@@ -101,6 +102,9 @@ export default function CpAppBar() {
                 {page}
               </Button>
             ))}
+            <Box sx={{ my: 2, display: "block" }}>
+              <PruneToTargetWarningIcon />
+            </Box>
           </Box>
         </Toolbar>
       </Container>

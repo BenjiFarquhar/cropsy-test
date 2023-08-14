@@ -1,6 +1,9 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import columns, { prunedToTarget } from "./ColumnDefinitions";
+import columns, {
+  prunedToTargetAverage,
+  prunedToTargetForRow,
+} from "./ColumnDefinitions";
 import { Row } from "../../../../../domain/row/Row";
 import { Box, Typography } from "@mui/material";
 
@@ -38,17 +41,6 @@ export default class RowsTable extends React.Component<
     );
   }
 
-  prunedToTarget(rows: Row[]): number {
-    const prunedToTargetTotal = rows.reduce(
-      (total, row) => total + (prunedToTarget(row.customStats) ?? 0),
-      0
-    );
-
-    const prunedToTargetAverage = prunedToTargetTotal / rows.length;
-
-    return prunedToTargetAverage;
-  }
-
   render() {
     return (
       <Box>
@@ -65,7 +57,7 @@ export default class RowsTable extends React.Component<
             sx={{ display: "flex", textAlign: "center" }}
           >
             Pruned to Target:
-            {` ${this.prunedToTarget(this.props.rows).toFixed(1)}%`}
+            {` ${prunedToTargetAverage(this.props.rows).toFixed(1)}%`}
           </Typography>
           <Typography
             variant="h6"

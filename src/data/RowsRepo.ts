@@ -1,9 +1,9 @@
 import axios from "axios";
 import IRowDto from "../domain/row/IRowDto";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import IBlockSearchDto from "../domain/block/IBlockSearchDto";
 import { Row } from "../domain/row/Row";
 import { QueryReturnValue } from "@reduxjs/toolkit/dist/query/baseQueryTypes";
+import { getBlocks } from "./BlocksRepo";
 
 export const getRowReportsById = async (id: number): Promise<IRowDto[]> => {
   if (id === 462 || id === 463) {
@@ -20,27 +20,26 @@ export const rowsApi = createApi({
     baseUrl: "https://raw.githubusercontent.com/wjsoft08/test-data/main/api/",
   }),
   endpoints: (build) => ({
-    getRowsById: build.query<Row[], IBlockSearchDto[]>({
-      async queryFn(
-        selectedBlocks: IBlockSearchDto[],
-        _queryApi,
-        _extraOptions,
-        fetchRows
-      ) {
+    getAllRows: build.query<Row[], {}>({
+      async queryFn(_args, _queryApi, _extraOptions, fetchRows) {
+        const allBlocks = await getBlocks("c");
         const rowReports: Row[] = (
           await Promise.all(
-            selectedBlocks.map(async (block): Promise<Row[]> => {
-              const dtos = (await fetchRows(
-                `example_row_reports_block_${block.id}.json`
-              )) as QueryReturnValue<IRowDto[]>;
+            allBlocks.map(async (block): Promise<Row[]> => {
+              const dtos =
+                block.id === 462 || block.id === 463
+                  ? ((await fetchRows(
+                      `example_row_reports_block_${block.id}.json`
+                    )) as QueryReturnValue<IRowDto[]>)
+                  : { data: [] };
               return dtos.data!.map((dto) => Row.fromDto(dto, block.name));
             })
           )
         ).flat();
-        return { data: rowReports as Row[] };
+        return { data: rowReports };
       },
     }),
   }),
 });
 
-export const { useGetRowsByIdQuery } = rowsApi;
+export const { useGetAllRowsQuery } = rowsApi;
