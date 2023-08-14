@@ -1,23 +1,16 @@
 import * as React from "react";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import columns, {
-  prunedToTargetAverage,
-  prunedToTargetForRow,
-} from "./ColumnDefinitions";
+import columns, { prunedToTargetAverage } from "./ColumnDefinitions";
 import { Row } from "../../../../../domain/row/Row";
 import { Box, Typography } from "@mui/material";
 
-export type Rows = {
-  rows: Row[];
-};
-
 export default class RowsTable extends React.Component<
-  Rows,
-  { columns: GridColDef<Row>[]; height: number }
+  {},
+  { columns: GridColDef<Row>[]; height: number; rows: Row[] }
 > {
-  constructor(props: Rows) {
+  constructor(props: {}) {
     super(props);
-    this.state = { columns: columns, height: 0 };
+    this.state = { columns: columns, height: 0, rows: [] };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -41,6 +34,10 @@ export default class RowsTable extends React.Component<
     );
   }
 
+  updateRows(rows: Row[]) {
+    this.setState({ rows: rows });
+  }
+
   render() {
     return (
       <Box>
@@ -57,8 +54,8 @@ export default class RowsTable extends React.Component<
             sx={{ display: "flex", textAlign: "center" }}
           >
             Pruned to Target:
-            {this.props.rows.length > 0
-              ? ` ${prunedToTargetAverage(this.props.rows).toFixed(1)}%`
+            {this.state.rows.length > 0
+              ? ` ${prunedToTargetAverage(this.state.rows).toFixed(1)}%`
               : " -"}
           </Typography>
           <Typography
@@ -66,14 +63,14 @@ export default class RowsTable extends React.Component<
             sx={{ display: "flex", textAlign: "center" }}
           >
             Total Vines:{" "}
-            {this.props.rows.length > 0
-              ? this.totalVines(this.props.rows)
+            {this.state.rows.length > 0
+              ? this.totalVines(this.state.rows)
               : "-"}
           </Typography>
         </Box>
         <DataGrid
           sx={{ height: this.state.height - 150 }}
-          rows={this.props.rows}
+          rows={this.state.rows}
           columns={this.state.columns}
           initialState={{
             pagination: {

@@ -2,19 +2,37 @@ import { Box, Chip, List, ListItem, Stack } from "@mui/material";
 import React from "react";
 import IBlockSearchDto from "../../../../domain/block/IBlockSearchDto";
 
+type BlocksDisplayState = {
+  blocks: IBlockSearchDto[];
+};
+
+type BlocksDisplayProps = {
+  ref: React.RefObject<BlocksDisplay>;
+};
+
 export default class BlocksDisplay extends React.Component<
-  {
-    blocks: IBlockSearchDto[];
-    onBlockDeleted: (block: IBlockSearchDto) => void;
-  },
-  {}
+  BlocksDisplayProps,
+  BlocksDisplayState
 > {
   constructor(props: any) {
     super(props);
-    this.state = { options: [] };
+    this.state = { blocks: [] };
   }
 
-  render() {
+  updateBlocks(block: IBlockSearchDto): void {
+    const blocks = this.state.blocks;
+    if (!this.state.blocks.find((b) => b.id === block.id)) {
+      blocks.push(block);
+    } else {
+      blocks.splice(
+        this.state.blocks.findIndex((b) => b.id === block.id),
+        1
+      );
+    }
+    this.setState({ blocks: blocks });
+  }
+
+  render(): JSX.Element {
     return (
       <Box
         sx={{
@@ -36,7 +54,7 @@ export default class BlocksDisplay extends React.Component<
             flexFlow: "row wrap",
           }}
         >
-          {this.props.blocks.map((block) => (
+          {this.state.blocks.map((block) => (
             <ListItem
               key={block.id}
               sx={{
@@ -46,7 +64,11 @@ export default class BlocksDisplay extends React.Component<
             >
               <Chip
                 label={block.name}
-                onDelete={() => this.props.onBlockDeleted(block)}
+                onDelete={() =>
+                  this.setState({
+                    blocks: this.state.blocks.filter((b) => b.id !== block.id),
+                  })
+                }
               />
             </ListItem>
           ))}
